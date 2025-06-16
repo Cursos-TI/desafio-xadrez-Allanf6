@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+// Constantes para movimentação
+const int BISPO_PASSOS = 5;
+const int TORRE_PASSOS = 5;
+const int RAINHA_PASSOS = 8;
+
+// Função recursiva para mover o bispo 5 casas na diagonal direita para cima
+// Usando loops aninhados para imprimir as direções antes da recursão
+void moverBispo(int passo) {
+    if (passo == 0) return;
+
+    // Loop aninhado para imprimir diagonal (cima + direita)
+    for (int i = 0; i < 1; i++) {
+        for (int j = 0; j < 1; j++) {
+            printf("Diagonal: ");
+            printf("Cima\n");
+            printf("Direita\n");
+        }
+    }
+
+    moverBispo(passo - 1);
+}
+
+// Função recursiva para mover torre 5 casas para a direita
+void moverTorre(int passo) {
+    if (passo == 0) return;
+
+    printf("Direita\n");
+    moverTorre(passo - 1);
+}
+
+// Função recursiva para mover rainha 8 casas para a esquerda
+void moverRainha(int passo) {
+    if (passo == 0) return;
+
+    printf("Esquerda\n");
+    moverRainha(passo - 1);
+}
+
+// Função para mover cavalo 1 vez em L para cima e direita
+// Usando loops aninhados, variáveis múltiplas, break e continue
+void moverCavalo() {
+    int movimentos = 0;
+
+    for (int i = 0; i < 2; i++) {        // 2 passos: 1 para cima, 1 para direita
+        for (int j = 0; j < 2; j++) {    // Movimentos possíveis (exemplo para controle)
+            if (i == 0 && j == 1) {
+                // 1 passo para cima
+                printf("Cima\n");
+                movimentos++;
+                break; // sai do loop interno após mover para cima
+            }
+            if (i == 1 && j == 0) {
+                // 2 passos para direita (em L)
+                printf("Direita\n");
+                movimentos++;
+                continue; // continua para a próxima iteração
